@@ -19,7 +19,7 @@ export const HeroCard = ({
         characters
 }) => {
 
-    const heroUrl = `/assets/heroes/${ id }.jpg`;
+    const heroUrl = `/heroes/${ id }.jpg`;
 
     //const charactersByHero = ( <p>{ characters }</p> )
 
