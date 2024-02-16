@@ -1,11 +1,19 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {AuthContext} from '../../auth/context/AuthContext';
+import { useContext } from 'react';
 
 
 export const Navbar = () => {
 
+    const { user, logout } = useContext(AuthContext)
+    
+
     const navigate = useNavigate();
 
     const onLogout = () => {
+
+        logout();
+
         navigate('/login', {
             replace: true /* Esto es para que borre el historial y no se pueda volver atras */
         });
@@ -51,7 +59,7 @@ export const Navbar = () => {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">
                     <span className='nav_item nav-link text-primary'>
-                        German
+                        { user?.name } {/* user? hace que si name es nulo no continue */}
                     </span>
 
                     <button 
